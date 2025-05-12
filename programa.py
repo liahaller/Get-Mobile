@@ -27,7 +27,7 @@ while game:
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
     window.blit(texto1, (40, 60))
-    window.blit(texto2, (100, 60))
+    window.blit(texto2, (130, 60))
 
     
     azul = (0, 61, 102)
