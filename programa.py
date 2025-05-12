@@ -5,8 +5,8 @@ import pygame
 pygame.init()
 
 # ----- Gera tela principal
-window = pygame.display.set_mode((600, 300))
-pygame.display.set_caption('Jogo da Lia')
+window = pygame.display.set_mode((512, 1098.400))
+pygame.display.set_caption('GetMóbile')
 
 # ----- Inicia estruturas de dados
 game = True
@@ -16,11 +16,11 @@ while game:
     # ----- Trata eventos
     for event in pygame.event.get():
         # ----- Verifica consequências
-        if event.type == pygame.KEYUP:
+        if event.type == pygame.QUIT:
             game = False
 
     # ----- Gera saídas
-    window.fill((0, 0, 255))  # Preenche com a cor branca
+    window.fill((255, 255, 255))  # Preenche com a cor branca
 
     # ----- Atualiza estado do jogo
     pygame.display.update()  # Mostra o novo frame para o jogador
