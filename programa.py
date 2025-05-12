@@ -14,6 +14,11 @@ game = True
 # ===== Loop principal =====
 while game:
     # ----- Trata eventos
+    azul = (0, 61, 102)
+    verde = (0, 204, 102)
+    font = pygame.font.SysFont('Montserrat',72)
+    texto1 = font.render('Get',True,verde)
+    texto2 = font.render('Móbile',True,azul)
     for event in pygame.event.get():
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
@@ -21,7 +26,10 @@ while game:
 
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
-
+    azul = (0, 61, 102)
+    verde = (0, 204, 102)
+    vertices = [(0,0),(512,0),(0,4)(512,4)]
+    pygame.draw.polygon(window,azul,vertices)
     # ----- Atualiza estado do jogo
     pygame.display.update()  # Mostra o novo frame para o jogador
 
