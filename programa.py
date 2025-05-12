@@ -26,9 +26,13 @@ while game:
 
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
+    window.blit(texto1, (40, 60))
+    window.blit(texto2, (100, 60))
+
+    
     azul = (0, 61, 102)
     verde = (0, 204, 102)
-    vertices = [(0,0),(512,0),(0,4)(512,4)]
+    vertices = [(0,0),(512,0),(0,4),(512,4)]
     pygame.draw.polygon(window,azul,vertices)
     # ----- Atualiza estado do jogo
     pygame.display.update()  # Mostra o novo frame para o jogador
