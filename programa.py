@@ -5,7 +5,7 @@ import pygame
 pygame.init()
 
 # ----- Gera tela principal
-window = pygame.display.set_mode((512, 800))
+window = pygame.display.set_mode((512, 700))
 pygame.display.set_caption('GetMóbile')
 
 # ----- Inicia estruturas de dados
