@@ -22,12 +22,16 @@ while game:
     cinza_escuro = (153, 153, 153)
     cinza_claro = (221, 221, 221)
     bege = (237, 224, 200)
+    preto = (0,0,0)
+    branco = (255,255,255)
+    
     font = pygame.font.SysFont('Montserrat',72)
     titulo1 = font.render('Get',True,verde)
     titulo2 = font.render('Móbile',True,azul)
     font = pygame.font.SysFont('Clear Sans Bold',22)
     texto_pontos = font.render('PONTOS',True,bege)
     texto_recorde = font.render('RECORDE',True,bege)
+    font = pygame.font.SysFont('Sans-serif',20)
     for event in pygame.event.get():
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
@@ -43,6 +47,10 @@ while game:
     y_quadrado_grande = 200
     largura_quadrado_pequeno = 65.5
     raio = 4
+    instrucoes = font.render("COMO JOGAR: Use as setas para mover as figuras. Quando",True,preto)
+    instrucoes2 = font.render('duas figuras da mesma faculdade se tocam, elas se combinam em uma só!',True,preto)
+    window.blit(instrucoes,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50))
+    window.blit(instrucoes2,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+15))
     pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
     desenha_quadrado_arredondado(window,cinza_escuro,x_quadrado_grande,y_quadrado_grande,largura_quadrado_grande,largura_quadrado_grande,raio)
     y_quadrado_pequeno = y_quadrado_grande+10
