@@ -14,19 +14,19 @@ pygame.display.set_caption('GetMóbile')
 # ----- Inicia estruturas de dados
 game = True
 
-imagens = {2:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg").convert(),4:pygame.image.load('C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141135.png').convert(),8:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141437.png").convert(),16:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\maxresdefault-2-1024x576 (1).jpg").convert(),32:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 145644.png").convert(),64:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 150226.png").convert(),128:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg").convert(),256:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg").convert(),512:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg").convert(),1024:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 142138.png").convert(),2048: pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg").convert()}
+imagens = {2:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg").convert(),4:pygame.image.load('imagens pygame\\Captura de tela 2025-05-13 141135.png').convert(),8:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 141437.png").convert(),16:pygame.image.load("imagens pygame\\maxresdefault-2-1024x576 (1).jpg").convert(),32:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 145644.png").convert(),64:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 150226.png").convert(),128:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg").convert(),256:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg").convert(),512:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg").convert(),1024:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 142138.png").convert(),2048: pygame.image.load('imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg').convert()}
 
-marista_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg").convert()
-consa_img = pygame.image.load('C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141135.png').convert()
-lourenco_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141437.png").convert()
-miguel_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\maxresdefault-2-1024x576 (1).jpg").convert()
-santo_americo_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 145644.png").convert()
-porto_seguro_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 150226.png").convert()
-dante_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg").convert()
-santa_cruz_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg").convert()
-band_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg").convert()
-vertice_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 142138.png").convert()
-mobile_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg").convert()
+marista_img = imagens[2]
+consa_img = imagens[4]
+lourenco_img = imagens[8]
+miguel_img = imagens[16]
+santo_americo_img = imagens[32]
+porto_seguro_img = imagens[64]
+dante_img = imagens[128]
+santa_cruz_img = imagens[256]
+band_img = imagens[512]
+vertice_img = imagens[1024]
+mobile_img = imagens[2048]
 
 # ===== Loop principal =====
 while game:
