@@ -15,7 +15,7 @@ def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
 
     pygame.draw.polygon(tela,cor,pontos)
 
-    pygame.draw.rect(tela, cor, pygame.Rect(x+raio,y,largura-raio*2,4))
-    pygame.draw.rect(tela, cor, pygame.Rect(x+raio,y+altura-raio,largura-raio*2,4))
-    pygame.draw.rect(tela, cor, pygame.Rect(x,y+raio,4,altura-raio*2))
-    pygame.draw.rect(tela, cor, pygame.Rect(x+largura-raio,y+raio,4,altura-raio*2))
+    pygame.draw.rect(tela, cor, pygame.Rect(x+raio,y,largura-raio*2,raio))
+    pygame.draw.rect(tela, cor, pygame.Rect(x+raio,y+altura-raio,largura-raio*2,raio))
+    pygame.draw.rect(tela, cor, pygame.Rect(x,y+raio,raio,altura-raio*2))
+    pygame.draw.rect(tela, cor, pygame.Rect(x+largura-raio,y+raio,raio,altura-raio*2))

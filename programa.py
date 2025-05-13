@@ -47,6 +47,8 @@ while game:
         y_quadrado_pequeno = y_quadrado_grande+10+(largura_quadrado_pequeno+10)*i
         for j in range(4):
             desenha_quadrado_arredondado(window,cinza_claro,x_quadrado_pequeno+(largura_quadrado_pequeno+10)*j,y_quadrado_pequeno,largura_quadrado_pequeno,largura_quadrado_pequeno,raio/2)
+    desenha_quadrado_arredondado(window,cinza_escuro,180,120,126.488,45,raio/2)
+    desenha_quadrado_arredondado(window,cinza_escuro,180+126.488+5,120,126.488,45,raio/2)
     # ----- Atualiza estado do jogo
     pygame.display.update()  # Mostra o novo frame para o jogador
 
