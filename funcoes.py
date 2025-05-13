@@ -45,17 +45,30 @@ def fundir(linha):
 
 #movimentações
 def mover_esquerda(grade):
-    grade = [fundir(comprimir(linha)) for linha in grade]
+    for i in range(4):
+        grade[i] = fundir(comprimir(grade[i]))
 
 def mover_direita(grade):
-    grade = [list(reversed(fundir(comprimir(list(reversed(linha)))))) for linha in grade]
+    for i in range(4):
+        grade[i] = list(reversed(fundir(comprimir(list(reversed(grade[i]))))))
 
 def mover_cima(grade):
-    grade = list(map(list, zip(*grade)))
+    transposta = list(map(list, zip(*grade)))
+    for i in range(4):
+        transposta[i] = fundir(comprimir(transposta[i]))
+    nova_grade = list(map(list, zip(*transposta)))
+    for i in range(len(nova_grade)):
+        grade[i] = nova_grade[i]
+    
 
 def mover_baixo(grade):
-    grade = list(map(list, zip(*grade)))
-
+    transposta = list(map(list, zip(*grade)))
+    for i in range(4):
+        transposta[i] = list(reversed(fundir(comprimir(list(reversed(transposta[i]))))))
+    nova_grade = list(map(list, zip(*transposta)))
+    for i in range(len(nova_grade)):
+        grade[i] = nova_grade[i]
+    
 #fim de jogo
 def verificar_fim_de_jogo():
     for linha in grade:
