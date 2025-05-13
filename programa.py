@@ -14,6 +14,20 @@ pygame.display.set_caption('GetMóbile')
 # ----- Inicia estruturas de dados
 game = True
 
+imagens = {2:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg").convert(),4:pygame.image.load('C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141135.png').convert(),8:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141437.png").convert(),16:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\maxresdefault-2-1024x576 (1).jpg").convert(),32:pygame.image.load("C:\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 145644.png").convert(),64:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 150226.png").convert(),128:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg").convert(),256:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg").convert(),512:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg").convert(),1024:pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 142138.png").convert(),2048: pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg").convert()}
+
+marista_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg").convert()
+consa_img = pygame.image.load('C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141135.png').convert()
+lourenco_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 141437.png").convert()
+miguel_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\maxresdefault-2-1024x576 (1).jpg").convert()
+santo_americo_img = pygame.image.load("C:\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 145644.png").convert()
+porto_seguro_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 150226.png").convert()
+dante_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg").convert()
+santa_cruz_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg").convert()
+band_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg").convert()
+vertice_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Capturas de tela\\Captura de tela 2025-05-13 142138.png").convert()
+mobile_img = pygame.image.load("C:\\Users\\liaha\\OneDrive\\Imagens\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg").convert()
+
 # ===== Loop principal =====
 while game:
     # ----- Trata eventos
@@ -47,13 +61,16 @@ while game:
     y_quadrado_grande = 200
     largura_quadrado_pequeno = 65.5
     raio = 4
+
     instrucoes = font.render("COMO JOGAR: Use as setas para mover as figuras.",True,preto)
     instrucoes2 = font.render('Quando duas figuras da mesma faculdade se tocam,',True,preto)
     instrucoes3 = font.render('elas se combinam em uma só!',True,preto)
     window.blit(instrucoes,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50))
     window.blit(instrucoes2,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+15))
     window.blit(instrucoes3,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+30))
+    
     pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
+
     desenha_quadrado_arredondado(window,cinza_escuro,x_quadrado_grande,y_quadrado_grande,largura_quadrado_grande,largura_quadrado_grande,raio)
     y_quadrado_pequeno = y_quadrado_grande+10
     for i in range(4):
@@ -63,6 +80,7 @@ while game:
             desenha_quadrado_arredondado(window,cinza_claro,x_quadrado_pequeno+(largura_quadrado_pequeno+10)*j,y_quadrado_pequeno,largura_quadrado_pequeno,largura_quadrado_pequeno,raio/2)
     for i in range(2):
         desenha_quadrado_arredondado(window,cinza_escuro,280+85*i,120,80,45,raio/2)
+    
     window.blit(texto_pontos,(287,125))
     window.blit(texto_recorde,(282.5+85,125))
     # ----- Atualiza estado do jogo
