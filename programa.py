@@ -28,6 +28,11 @@ band_img = pygame.transform.scale(imagens[512],(66,66))
 vertice_img = pygame.transform.scale(imagens[1024],(66,66))
 mobile_img = pygame.transform.scale(imagens[2048],(66,66))
 
+grade = [[0 for _ in range(4)] for _ in range(4)]
+gerar_bloco(grade)
+gerar_bloco(grade)
+
+
 # ===== Loop principal =====
 while game:
     # ----- Trata eventos
@@ -66,10 +71,6 @@ while game:
     window.blit(instrucoes3,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+30))
     
     pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
-
-    grade = [[0 for _ in range(4)] for _ in range(4)]
-    gerar_bloco(grade)
-    gerar_bloco(grade)
 
     desenha_quadrado_arredondado(window,cinza_escuro,x_quadrado_grande,y_quadrado_grande,largura_quadrado_grande,largura_quadrado_grande,raio)
     y_quadrado_pequeno = y_quadrado_grande+10
