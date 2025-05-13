@@ -1,7 +1,7 @@
 # ===== Inicialização =====
 # ----- Importa e inicia pacotes
 import pygame
-from funcoes import *
+from funcoes import desenha_quadrado_arredondado
 
 pygame.init()
 
