@@ -1,7 +1,7 @@
 # ===== Inicialização =====
 # ----- Importa e inicia pacotes
 import pygame
-from funcoes import desenha_quadrado_arredondado
+from funcoes import *
 
 pygame.init()
 
@@ -70,6 +70,10 @@ while game:
     window.blit(instrucoes3,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+30))
     
     pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
+
+    grade = [[0 for _ in range(4)] for _ in range(4)]
+    gerar_bloco()
+    gerar_bloco()
 
     desenha_quadrado_arredondado(window,cinza_escuro,x_quadrado_grande,y_quadrado_grande,largura_quadrado_grande,largura_quadrado_grande,raio)
     y_quadrado_pequeno = y_quadrado_grande+10
