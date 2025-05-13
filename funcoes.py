@@ -1,4 +1,5 @@
 import pygame
+import random
 
 def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
     canto_superior_esquerdo = (x,y+raio)
