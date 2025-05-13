@@ -21,9 +21,13 @@ while game:
     verde = (0, 204, 102)
     cinza_escuro = (153, 153, 153)
     cinza_claro = (221, 221, 221)
+    bege = (237, 224, 200)
     font = pygame.font.SysFont('Montserrat',72)
-    texto1 = font.render('Get',True,verde)
-    texto2 = font.render('Móbile',True,azul)
+    titulo1 = font.render('Get',True,verde)
+    titulo2 = font.render('Móbile',True,azul)
+    font = pygame.font.SysFont('Clear Sans Bold',22)
+    texto_pontos = font.render('PONTOS',True,bege)
+    texto_recorde = font.render('RECORDE',True,bege)
     for event in pygame.event.get():
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
@@ -31,8 +35,8 @@ while game:
 
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
-    window.blit(texto1, (40, 50))
-    window.blit(texto2, (130, 50))
+    window.blit(titulo1, (40, 50))
+    window.blit(titulo2, (130, 50))
 
     largura_quadrado_grande = 312
     x_quadrado_grande = (largura-largura_quadrado_grande)/2
@@ -47,8 +51,10 @@ while game:
         y_quadrado_pequeno = y_quadrado_grande+10+(largura_quadrado_pequeno+10)*i
         for j in range(4):
             desenha_quadrado_arredondado(window,cinza_claro,x_quadrado_pequeno+(largura_quadrado_pequeno+10)*j,y_quadrado_pequeno,largura_quadrado_pequeno,largura_quadrado_pequeno,raio/2)
-    desenha_quadrado_arredondado(window,cinza_escuro,180,120,126.488,45,raio/2)
-    desenha_quadrado_arredondado(window,cinza_escuro,180+126.488+5,120,126.488,45,raio/2)
+    for i in range(2):
+        desenha_quadrado_arredondado(window,cinza_escuro,280+85*i,120,80,45,raio/2)
+    window.blit(texto_pontos,(287,125))
+    window.blit(texto_recorde,(282.5+85,125))
     # ----- Atualiza estado do jogo
     pygame.display.update()  # Mostra o novo frame para o jogador
 
