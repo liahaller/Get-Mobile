@@ -16,17 +16,17 @@ game = True
 
 imagens = {2:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg").convert(),4:pygame.image.load('imagens pygame\\Captura de tela 2025-05-13 141135.png').convert(),8:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 141437.png").convert(),16:pygame.image.load("imagens pygame\\maxresdefault-2-1024x576 (1).jpg").convert(),32:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 145644.png").convert(),64:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 150226.png").convert(),128:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg").convert(),256:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg").convert(),512:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg").convert(),1024:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 142138.png").convert(),2048: pygame.image.load('imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg').convert()}
 
-marista_img = imagens[2]
-consa_img = imagens[4]
-lourenco_img = imagens[8]
-miguel_img = imagens[16]
-santo_americo_img = imagens[32]
-porto_seguro_img = imagens[64]
-dante_img = imagens[128]
-santa_cruz_img = imagens[256]
-band_img = imagens[512]
-vertice_img = imagens[1024]
-mobile_img = imagens[2048]
+marista_img = pygame.transform.scale(imagens[2],(66,66))
+consa_img = pygame.transform.scale(imagens[4],(66,66))
+lourenco_img = pygame.transform.scale(imagens[8],(66,66))
+miguel_img = pygame.transform.scale(imagens[16],(66,66))
+santo_americo_img = pygame.transform.scale(imagens[32],(66,66))
+porto_seguro_img = pygame.transform.scale(imagens[64],(66,66))
+dante_img = pygame.transform.scale(imagens[128],(66,66))
+santa_cruz_img = pygame.transform.scale(imagens[256],(66,66))
+band_img = pygame.transform.scale(imagens[512],(66,66))
+vertice_img = pygame.transform.scale(imagens[1024],(66,66))
+mobile_img = pygame.transform.scale(imagens[2048],(66,66))
 
 # ===== Loop principal =====
 while game:
