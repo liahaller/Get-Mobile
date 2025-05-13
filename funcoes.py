@@ -22,7 +22,7 @@ def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
     pygame.draw.rect(tela, cor, pygame.Rect(x+largura-raio,y+raio,raio,altura-raio*2))
 
 #Gera blocos aleatorios
-def gerar_bloco():
+def gerar_bloco(grade):
     vazias = [(l, c) for l in range(4) for c in range(4) if grade[l][c] == 0]
     if vazias:
         linha, coluna = random.choice(vazias)

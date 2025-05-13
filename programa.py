@@ -72,8 +72,8 @@ while game:
     pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
 
     grade = [[0 for _ in range(4)] for _ in range(4)]
-    gerar_bloco()
-    gerar_bloco()
+    gerar_bloco(grade)
+    gerar_bloco(grade)
 
     desenha_quadrado_arredondado(window,cinza_escuro,x_quadrado_grande,y_quadrado_grande,largura_quadrado_grande,largura_quadrado_grande,raio)
     y_quadrado_pequeno = y_quadrado_grande+10
@@ -81,7 +81,17 @@ while game:
         x_quadrado_pequeno = x_quadrado_grande+10
         y_quadrado_pequeno = y_quadrado_grande+10+(largura_quadrado_pequeno+10)*i
         for j in range(4):
-            desenha_quadrado_arredondado(window,cinza_claro,x_quadrado_pequeno+(largura_quadrado_pequeno+10)*j,y_quadrado_pequeno,largura_quadrado_pequeno,largura_quadrado_pequeno,raio/2)
+            x = x_quadrado_pequeno+(largura_quadrado_pequeno+10)*j
+            y = y_quadrado_pequeno
+            valor = grade[i][j]
+            desenha_quadrado_arredondado(window,cinza_claro,x,y,largura_quadrado_pequeno,largura_quadrado_pequeno,raio/2)
+
+            if valor != 0:
+                imagem = imagens.get(valor)
+                if imagem:
+                    imagem = pygame.transform.scale(imagem,(66,66))
+                    window.blit(imagem,(x,y))
+    
     for i in range(2):
         desenha_quadrado_arredondado(window,cinza_escuro,280+85*i,120,80,45,raio/2)
     
