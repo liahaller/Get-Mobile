@@ -6,7 +6,7 @@ def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
     canto_inferior_direito = (x+largura,y+altura-raio)
     canto_inferior_esquerdo = (x,y+altura-raio)
 
-    pontos = [(x+raio,y+raio),(x+largura-raio,y+raio),(x+largura-raio,y+altura-raio),(x+raio,y+largura-raio)]
+    pontos = [(x+raio,y+raio),(x+largura-raio,y+raio),(x+largura-raio,y+altura-raio),(x+raio,y+altura-raio)]
 
     pygame.draw.ellipse(tela,cor,(x,y,raio*2,raio*2))
     pygame.draw.ellipse(tela,cor,(x+largura-raio*2,y,raio*2,raio*2))
