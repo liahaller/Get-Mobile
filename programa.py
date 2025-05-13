@@ -46,10 +46,6 @@ while game:
     texto_pontos = font.render('PONTOS',True,bege)
     texto_recorde = font.render('RECORDE',True,bege)
     font = pygame.font.SysFont('Sans-serif',20)
-    for event in pygame.event.get():
-        # ----- Verifica consequências
-        if event.type == pygame.QUIT:
-            game = False
 
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
@@ -94,6 +90,24 @@ while game:
     
     for i in range(2):
         desenha_quadrado_arredondado(window,cinza_escuro,280+85*i,120,80,45,raio/2)
+
+    for event in pygame.event.get():
+        # ----- Verifica consequências
+        if event.type == pygame.QUIT:
+            game = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                mover_esquerda(grade)
+                gerar_bloco(grade)
+            elif event.key == pygame.K_RIGHT:
+                mover_direita(grade)
+                gerar_bloco(grade)
+            elif event.key == pygame.K_UP:
+                mover_cima(grade)
+                gerar_bloco(grade)
+            elif event.key == pygame.K_DOWN:
+                mover_baixo(grade)
+                gerar_bloco(grade)
     
     window.blit(texto_pontos,(287,125))
     window.blit(texto_recorde,(282.5+85,125))

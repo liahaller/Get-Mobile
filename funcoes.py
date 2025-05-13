@@ -44,24 +44,16 @@ def fundir(linha):
 
 
 #movimentações
-def mover_esquerda():
-    global grade
+def mover_esquerda(grade):
     grade = [fundir(comprimir(linha)) for linha in grade]
 
-def mover_direita():
-    global grade
+def mover_direita(grade):
     grade = [list(reversed(fundir(comprimir(list(reversed(linha)))))) for linha in grade]
 
-def mover_cima():
-    global grade
-    grade = list(map(list, zip(*grade)))
-    mover_esquerda()
+def mover_cima(grade):
     grade = list(map(list, zip(*grade)))
 
-def mover_baixo():
-    global grade
-    grade = list(map(list, zip(*grade)))
-    mover_direita()
+def mover_baixo(grade):
     grade = list(map(list, zip(*grade)))
 
 #fim de jogo
