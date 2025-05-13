@@ -47,10 +47,12 @@ while game:
     y_quadrado_grande = 200
     largura_quadrado_pequeno = 65.5
     raio = 4
-    instrucoes = font.render("COMO JOGAR: Use as setas para mover as figuras. Quando",True,preto)
-    instrucoes2 = font.render('duas figuras da mesma faculdade se tocam, elas se combinam em uma só!',True,preto)
+    instrucoes = font.render("COMO JOGAR: Use as setas para mover as figuras.",True,preto)
+    instrucoes2 = font.render('Quando duas figuras da mesma faculdade se tocam,',True,preto)
+    instrucoes3 = font.render('elas se combinam em uma só!',True,preto)
     window.blit(instrucoes,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50))
     window.blit(instrucoes2,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+15))
+    window.blit(instrucoes3,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+30))
     pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
     desenha_quadrado_arredondado(window,cinza_escuro,x_quadrado_grande,y_quadrado_grande,largura_quadrado_grande,largura_quadrado_grande,raio)
     y_quadrado_pequeno = y_quadrado_grande+10
