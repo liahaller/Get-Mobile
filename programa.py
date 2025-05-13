@@ -35,10 +35,18 @@ while game:
     window.blit(texto2, (130, 50))
 
     largura_quadrado_grande = 312
-    largura_quadrado_pequeno = 57.5
+    x_quadrado_grande = (largura-largura_quadrado_grande)/2
+    y_quadrado_grande = 200
+    largura_quadrado_pequeno = 65.5
     raio = 4
     pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
-    desenha_quadrado_arredondado(window,cinza_escuro,(largura-largura_quadrado_grande)/2,200,largura_quadrado_grande,largura_quadrado_grande,raio)
+    desenha_quadrado_arredondado(window,cinza_escuro,x_quadrado_grande,y_quadrado_grande,largura_quadrado_grande,largura_quadrado_grande,raio)
+    y_quadrado_pequeno = y_quadrado_grande+10
+    for i in range(4):
+        x_quadrado_pequeno = x_quadrado_grande+10
+        y_quadrado_pequeno = y_quadrado_grande+10+(largura_quadrado_pequeno+10)*i
+        for j in range(4):
+            desenha_quadrado_arredondado(window,cinza_claro,x_quadrado_pequeno+(largura_quadrado_pequeno+10)*j,y_quadrado_pequeno,largura_quadrado_pequeno,largura_quadrado_pequeno,raio/2)
     # ----- Atualiza estado do jogo
     pygame.display.update()  # Mostra o novo frame para o jogador
 
