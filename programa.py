@@ -2,6 +2,7 @@
 # ----- Importa e inicia pacotes
 import pygame
 pygame.init()
+pygame.mixer.init()
 largura = 512
 altura = 700
 window = pygame.display.set_mode((largura, altura))
@@ -67,6 +68,8 @@ mobile_img = pygame.transform.scale(imagens[2048],(66,66))
 
 img = {2:marista_img,4:consa_img,8:lourenco_img,16:miguel_img,32:santo_americo_img,64:porto_seguro_img,128:dante_img,256:santa_cruz_img,512:band_img,1024:vertice_img,2048:mobile_img}
 
+logo_mobile_grande = pygame.image.load('imagens pygame\\logo mobile.png').convert()
+logo_mobile_grande = pygame.transform.scale(logo_mobile_grande,(50,50))
 maior = 0
 
 # ----- Inicia estruturas de dados
@@ -127,6 +130,7 @@ while game:
     window.fill(branco)
     window.blit(titulo1, (40, 50))
     window.blit(titulo2, (130, 50))
+    window.blit(logo_mobile_grande,(295,45))
 
     window.blit(instrucoes,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50))
     window.blit(instrucoes2,(x_quadrado_grande,y_quadrado_grande+largura_quadrado_grande+50+15))
