@@ -9,6 +9,7 @@ pygame.display.set_caption('GetMóbile')
 from funcoes import *
 from copy import deepcopy
 from bloco import Bloco
+from math import *
 
 
 
@@ -24,7 +25,7 @@ bege = (237, 224, 200)
 preto = (0,0,0)
 branco = (255,255,255)
 azul_transparente = (0, 61, 102, 128)
-cinza_claro_transparente = (221, 221, 221, 128)
+vermelho_transparente = (255,0,0, 190)
     
 font = pygame.font.SysFont('Montserrat',72)
 titulo1 = font.render('Get',True,verde)
@@ -34,8 +35,12 @@ texto_pontos = font.render('PONTOS',True,bege)
 texto_recorde = font.render('RECORDE',True,bege)
 font = pygame.font.SysFont('Sans-serif',20)
 
-ret_translucido = pygame.Surface((largura,altura), pygame.SRCALPHA)
-ret = ret_translucido.get_rect()
+ret_translucido_vermelho = pygame.Surface((largura,altura), pygame.SRCALPHA)
+ret_translucido_vermelho.fill(vermelho_transparente)
+ret_translucido_azul = pygame.Surface((largura,altura), pygame.SRCALPHA)
+ret_translucido_azul.fill(azul_transparente)
+
+ret_tentar_novamente = pygame.Rect(66,y_quadrado_grande+50+largura_quadrado_pequeno+50,380,largura_quadrado_pequeno)
 
 largura_quadrado_grande = 312
 x_quadrado_grande = (largura-largura_quadrado_grande)/2
@@ -62,6 +67,7 @@ mobile_img = pygame.transform.scale(imagens[2048],(66,66))
 
 img = {2:marista_img,4:consa_img,8:lourenco_img,16:miguel_img,32:santo_americo_img,64:porto_seguro_img,128:dante_img,256:santa_cruz_img,512:band_img,1024:vertice_img,2048:mobile_img}
 
+maior = 0
 
 # ----- Inicia estruturas de dados
 game = True
@@ -104,6 +110,14 @@ while game:
                 if mover_baixo(grade,all_blocos):
                     gerar_bloco(grade, all_blocos)
                 print_grade(grade)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if verificar_fim_de_jogo(grade) or verificar_vitoria:
+                if ret_tentar_novamente.collidepoint(event.pos):
+                    all_blocos.empty()
+                    grade = [[0 for _ in range(4)] for _ in range(4)]
+                    gerar_bloco(grade, all_blocos)
+                    gerar_bloco(grade, all_blocos)
+                    verificar_fim_de_jogo(grade) == False
     
     all_blocos.update()
 
@@ -143,34 +157,43 @@ while game:
     for i in range(2):
         desenha_quadrado_arredondado(window,cinza_escuro,280+85*i,120,80,45,raio/2)
 
+    
     font = pygame.font.SysFont('Clear Sans Bold',22)
     texto_valor_pontos = font.render(f'{calcula_pontos(grade)}',True,bege)
+    if int(calcula_pontos(grade)) > maior:
+        maior = int(calcula_pontos(grade))
+    texto_valor_recorde = font.render(f'{maior}',True,bege)
     
     window.blit(texto_pontos,(287,125))
     window.blit(texto_valor_pontos,(287,125+20))
     window.blit(texto_recorde,(282.5+85,125))
+    window.blit(texto_valor_recorde,(282.5+85,125+20))
+
     if verificar_fim_de_jogo(grade):
-        font = pygame.font.SysFont('Clear Sans Bold',22)
-        pygame.draw.rect(ret_translucido, cinza_claro_transparente, ret)
-        texto_fim_de_jogo = font.render('FIM DE JOGO',True,bege)
-        window.blit(texto_fim_de_jogo,(x_quadrado_grande+largura_quadrado_grande/2-texto_fim_de_jogo.get_width()/2,y_quadrado_grande+largura_quadrado_grande/2-texto_fim_de_jogo.get_height()/2))
-        font = pygame.font.SysFont('Clear Sans Bold',22)
-        texto_tentar_novamente = font.render('Pressione R para tentar novamente',True,bege)
-        window.blit(texto_tentar_novamente,(x_quadrado_grande+largura_quadrado_grande/2-texto_tentar_novamente.get_width()/2,y_quadrado_grande+largura_quadrado_grande/2-texto_tentar_novamente.get_height()/2+30))
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_r:
-                grade = [[0 for _ in range(4)] for _ in range(4)]
-                gerar_bloco(grade, all_blocos)
-                gerar_bloco(grade, all_blocos)
+        font = pygame.font.SysFont('Clear Sans Bold',57)
+        window.blit(ret_translucido_vermelho,(0,0))
+        texto_fim_de_jogo = font.render('GAME OVER',True,branco)
+        font = pygame.font.SysFont('Clear Sans Bold',47)
+        texto_tentar_novamente = font.render('TENTAR NOVAMENTE',True,branco)
+        desenha_quadrado_arredondado(window,cinza_escuro,66,y_quadrado_grande+50+largura_quadrado_pequeno+30,380,largura_quadrado_pequeno,raio)
+        pos_mouse = pygame.mouse.get_pos()
+        if ret_tentar_novamente.collidepoint(pos_mouse):
+            desenha_quadrado_arredondado(window,vermelho_transparente,66,y_quadrado_grande+50+largura_quadrado_pequeno+30,380,largura_quadrado_pequeno,raio)
+        window.blit(texto_fim_de_jogo,(x_quadrado_grande+35,y_quadrado_grande+70))
+        window.blit(texto_tentar_novamente,(x_quadrado_grande-20,y_quadrado_grande+70+largura_quadrado_pequeno+10+20))
     
     if verificar_vitoria(grade):
         font = pygame.font.SysFont('Clear Sans Bold',50)
-        pygame.draw.rect(window, azul_transparente, pygame.Rect(0,0,largura,altura))
+        window.blit(ret_translucido_azul,(0,0))
         texto_vitoria = font.render('VOCÊ VENCEU!',True,branco)
-        window.blit(texto_vitoria,(x_quadrado_grande+largura_quadrado_grande/2-texto_vitoria.get_width()/2,y_quadrado_grande+largura_quadrado_grande/2-texto_vitoria.get_height()/2))
-        font = pygame.font.SysFont('Clear Sans Bold',22)
-        texto_tentar_novamente = font.render('Pressione R para tentar novamente',True,bege)
-        window.blit(texto_tentar_novamente,(x_quadrado_grande+largura_quadrado_grande/2-texto_tentar_novamente.get_width()/2,y_quadrado_grande+largura_quadrado_grande/2-texto_tentar_novamente.get_height()/2+30))
+        window.blit(texto_vitoria,(x_quadrado_grande+35,y_quadrado_grande+70))
+        font = pygame.font.SysFont('Clear Sans Bold',47)
+        texto_tentar_novamente = font.render('TENTAR NOVAMENTE',True,branco)
+        desenha_quadrado_arredondado(window,cinza_escuro,66,y_quadrado_grande+50+largura_quadrado_pequeno+30,380,largura_quadrado_pequeno,raio)
+        pos_mouse = pygame.mouse.get_pos()
+        if ret_tentar_novamente.collidepoint(pos_mouse):
+            desenha_quadrado_arredondado(window,azul_transparente,66,y_quadrado_grande+50+largura_quadrado_pequeno+30,380,largura_quadrado_pequeno,raio)
+        window.blit(texto_tentar_novamente,(x_quadrado_grande-20,y_quadrado_grande+70+largura_quadrado_pequeno+10+20))
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
                 grade = [[0 for _ in range(4)] for _ in range(4)]
