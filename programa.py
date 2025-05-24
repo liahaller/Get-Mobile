@@ -72,6 +72,7 @@ logo_mobile_grande = pygame.image.load('imagens pygame\\logo mobile.png').conver
 logo_mobile_grande = pygame.transform.scale(logo_mobile_grande,(50,50))
 maior = 0
 
+
 # ----- Inicia estruturas de dados
 game = True
 
