@@ -17,7 +17,3 @@ Controles:
 ← : Move todos os blocos para a esquerda
 → : Move todos os blocos para a direita
 
-Créditos:
-- A função "gerar_bloco", "verificar_derrota", "comprimir_linha" e a "fundir" foram 100% geradas com o chatGPT, no link:
-- O chatGPT também foi utilizado para corrigir eventuais erros nos códigos
-- 25% das funções "mover_cima", "mover_baixo", "mover_direita" e "mover_esquerda" foram criadas com o chatGPT
