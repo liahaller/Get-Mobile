@@ -101,19 +101,15 @@ while game:
             if event.key == pygame.K_LEFT:
                 if mover_esquerda(grade,all_blocos):
                     gerar_bloco(grade, all_blocos)
-                print_grade(grade)
             elif event.key == pygame.K_RIGHT:
                 if mover_direita(grade,all_blocos):
                     gerar_bloco(grade, all_blocos)
-                print_grade(grade)
             elif event.key == pygame.K_UP:
                 if mover_cima(grade,all_blocos):
                     gerar_bloco(grade, all_blocos)
-                print_grade(grade)
             elif event.key == pygame.K_DOWN:
                 if mover_baixo(grade,all_blocos):
                     gerar_bloco(grade, all_blocos)
-                print_grade(grade)
         if event.type == pygame.MOUSEBUTTONDOWN:
             if verificar_fim_de_jogo(grade) or verificar_vitoria:
                 if ret_tentar_novamente.collidepoint(event.pos):

@@ -484,7 +484,3 @@ def verificar_vitoria(grade):
             return True
     return False
 
-def print_grade(grade):
-    for linha in grade:
-        print(linha)
-    print("-----")
