@@ -22,19 +22,19 @@ azul = (0, 61, 102)
 verde = (0, 204, 102)
 cinza_escuro = (153, 153, 153)
 cinza_claro = (221, 221, 221)
-bege = (237, 224, 200)
 preto = (0,0,0)
 branco = (255,255,255)
 azul_transparente = (0, 61, 102, 128)
 vermelho_transparente = (255,0,0, 190)
+branco_transparente = (255,255,255, 200)
 
 #definição das fontes do título, corpo, pontos e recorde   
 font = pygame.font.SysFont('Montserrat',72)
 titulo1 = font.render('Get',True,verde)
 titulo2 = font.render('Móbile',True,azul)
 font = pygame.font.SysFont('Clear Sans Bold',22)
-texto_pontos = font.render('PONTOS',True,bege)
-texto_recorde = font.render('RECORDE',True,bege)
+texto_pontos = font.render('PONTOS',True,branco)
+texto_recorde = font.render('RECORDE',True,branco)
 font = pygame.font.SysFont('Sans-serif',20)
 
 #definição das cores com transparencia da vitória ou fim de jogo
@@ -87,10 +87,46 @@ logo_mobile_grande = pygame.transform.scale(logo_mobile_grande,(50,50))
 #definição do maior como parâmetro para definição do recorde
 maior = 0
 
+INIT = 0
+GAME = 1
+QUIT = 2
 
-# ----- Inicia estruturas de dados
+state = INIT
+
+while state == INIT:
+    #Gerando a tela inicial
+    clock = pygame.time.Clock()
+    FPS = 60
+
+    ret_translucido_branco = pygame.Surface((largura,altura), pygame.SRCALPHA)
+    ret_translucido_branco.fill(branco_transparente)
+
+    font = pygame.font.SysFont('Clear Sans Bold',47)
+    texto_iniciar_jogo = font.render('INICIAR JOGO',True,branco)
+
+    running = True
+    while running:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                state = QUIT
+                pygame.quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if ret_tentar_novamente.collidepoint(event.pos):
+                    state = GAME
+                    running = False
+        window.blit(ret_translucido_branco, (0, 0))
+        pygame.draw.rect(window, azul, pygame.Rect(0,0,largura,4))
+        window.blit(titulo1, (105, 280))
+        window.blit(titulo2, (195, 280))
+        window.blit(logo_mobile_grande,(365,275))
+        desenha_quadrado_arredondado(window,cinza_escuro,116,y_quadrado_grande+50+largura_quadrado_pequeno+30,280,largura_quadrado_pequeno,raio)
+        pos_mouse = pygame.mouse.get_pos()
+        if ret_tentar_novamente.collidepoint(pos_mouse):
+            desenha_quadrado_arredondado(window,cinza_claro,116,y_quadrado_grande+50+largura_quadrado_pequeno+30,280,largura_quadrado_pequeno,raio)
+        window.blit(texto_iniciar_jogo,(x_quadrado_grande+40,y_quadrado_grande+70+largura_quadrado_pequeno+10+20))
+        pygame.display.flip()  
 game = True
-
 clock = pygame.time.Clock()
 FPS = 60
 
@@ -178,10 +214,10 @@ while game:
 
     #define a fonte e escreve a pontuação de acordo com a função e o recorde a partir da maior pontuação registrada
     font = pygame.font.SysFont('Clear Sans Bold',22)
-    texto_valor_pontos = font.render(f'{calcula_pontos(grade)}',True,bege)
+    texto_valor_pontos = font.render(f'{calcula_pontos(grade)}',True,branco)
     if int(calcula_pontos(grade)) > maior:
         maior = int(calcula_pontos(grade))
-    texto_valor_recorde = font.render(f'{maior}',True,bege)
+    texto_valor_recorde = font.render(f'{maior}',True,branco)
     window.blit(texto_pontos,(287,125))
     window.blit(texto_valor_pontos,(287,125+20))
     window.blit(texto_recorde,(282.5+85,125))
