@@ -1,5 +1,6 @@
 import pygame
 pygame.init()
+pygame.mixer.init()
 largura = 512
 altura = 700
 window = pygame.display.set_mode((largura, altura))
@@ -16,6 +17,9 @@ largura_quadrado_pequeno = 65.5
 x_quadrado_pequeno = x_quadrado_grande+10
 y_quadrado_pequeno = y_quadrado_grande+10+(largura_quadrado_pequeno+10)
 
+#Carrega os sons do jogo
+som_fundir = pygame.mixer.Sound("Sons pygame\\Som fundir.wav")
+som_mexer = pygame.mixer.Sound("Sons pygame\\Som mexer.wav")
 pontos_grade = []
 for i in range(4):
     pontos_linha = []
@@ -158,6 +162,7 @@ def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
                             bloco.target_x = pontos_grade[linha][coluna][0]
                             grade[linha][0] = grade[linha][i]
                             grade[linha][i] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(1,4):
@@ -165,7 +170,7 @@ def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
                             if grade[linha][0] == grade[linha][i]:
                                 bloco = buscar_bloco(all_blocos,linha,i)
                                 bloco.target_x = pontos_grade[linha][0][0]
-
+                                som_fundir.play()
                                 grade[linha][0] = grade[linha][0] * 2
                                 grade[linha][i] = 0
                                 break
@@ -179,6 +184,7 @@ def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
                             bloco.target_x = pontos_grade[linha][coluna][0]
                             grade[linha][1] = grade[linha][i]
                             grade[linha][i] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(2,4):
@@ -186,7 +192,7 @@ def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
                             if grade[linha][1] == grade[linha][i]:
                                 bloco = buscar_bloco(all_blocos,linha,i)
                                 bloco.target_x = pontos_grade[linha][1][0]
-
+                                som_fundir.play()
                                 grade[linha][1] = grade[linha][1] * 2
                                 grade[linha][i] = 0
                                 break
@@ -200,6 +206,7 @@ def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
                             bloco.target_x = pontos_grade[linha][coluna][0]
                             grade[linha][2] = grade[linha][i]
                             grade[linha][i] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(3,4):
@@ -207,7 +214,7 @@ def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
                             if grade[linha][2] == grade[linha][i]:
                                 bloco = buscar_bloco(all_blocos,linha,i)
                                 bloco.target_x = pontos_grade[linha][2][0]
-
+                                som_fundir.play()           
                                 grade[linha][2] = grade[linha][2] * 2
                                 grade[linha][i] = 0
                                 break
@@ -246,6 +253,7 @@ def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):
                             bloco.target_x = pontos_grade[linha][coluna][0]
                             grade[linha][3] = grade[linha][i]
                             grade[linha][i] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(2,-1,-1):
@@ -253,7 +261,7 @@ def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):
                             if grade[linha][coluna] == grade[linha][i]:
                                 bloco = buscar_bloco(all_blocos,linha,i)
                                 bloco.target_x = pontos_grade[linha][coluna][0]
-
+                                som_fundir.play()
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[linha][i] = 0
                                 break
@@ -267,6 +275,7 @@ def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):
                             bloco.target_x = pontos_grade[linha][coluna][0]
                             grade[linha][coluna] = grade[linha][i]
                             grade[linha][i] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(1,-1,-1):
@@ -274,7 +283,7 @@ def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):
                             if grade[linha][coluna] == grade[linha][i]:
                                 bloco = buscar_bloco(all_blocos,linha,i)
                                 bloco.target_x = pontos_grade[linha][coluna][0]
-
+                                som_fundir.play()   
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[linha][i] = 0
                                 break
@@ -288,6 +297,7 @@ def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):
                             bloco.target_x = pontos_grade[linha][coluna][0]
                             grade[linha][coluna] = grade[linha][i]
                             grade[linha][i] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(0,-1,-1):
@@ -295,7 +305,7 @@ def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):
                             if grade[linha][coluna] == grade[linha][i]:
                                 bloco = buscar_bloco(all_blocos,linha,i)
                                 bloco.target_x = pontos_grade[linha][coluna][0]
-
+                                som_fundir.play()
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[linha][i] = 0
                                 break
@@ -336,6 +346,7 @@ def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
                             bloco.target_y = pontos_grade[linha][coluna][1]
                             grade[linha][coluna] = grade[i][coluna]
                             grade[i][coluna] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(2,-1,-1):
@@ -343,7 +354,7 @@ def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
                             if grade[linha][coluna] == grade[i][coluna]:
                                 bloco = buscar_bloco(all_blocos,i,coluna)
                                 bloco.target_y = pontos_grade[linha][coluna][1]
-
+                                som_fundir.play()
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[i][coluna] = 0
                                 break
@@ -357,6 +368,7 @@ def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
                             bloco.target_y = pontos_grade[linha][coluna][1]
                             grade[linha][coluna] = grade[i][coluna]
                             grade[i][coluna] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(1,-1,-1):
@@ -364,7 +376,7 @@ def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
                             if grade[linha][coluna] == grade[i][coluna]:
                                 bloco = buscar_bloco(all_blocos,i,coluna)
                                 bloco.target_y = pontos_grade[linha][coluna][1]
-
+                                som_fundir.play()
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[i][coluna] = 0
                                 break
@@ -378,6 +390,7 @@ def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
                             bloco.target_y = pontos_grade[linha][coluna][1]
                             grade[linha][coluna] = grade[i][coluna]
                             grade[i][coluna] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(0,-1,-1):
@@ -385,7 +398,7 @@ def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
                             if grade[linha][coluna] == grade[i][coluna]:
                                 bloco = buscar_bloco(all_blocos,i,coluna)
                                 bloco.target_y = pontos_grade[linha][coluna][1]
-
+                                som_fundir.play()
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[i][coluna] = 0
                                 break
@@ -424,6 +437,7 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
                             bloco.target_y = pontos_grade[linha][coluna][1]
                             grade[linha][coluna] = grade[i][coluna]
                             grade[i][coluna] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(1,4):
@@ -433,6 +447,7 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
                                 bloco.target_y = pontos_grade[linha][coluna][1]
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[i][coluna] = 0
+                                som_fundir.play()
                                 break
                             else:
                                 break
@@ -444,6 +459,7 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
                             bloco.target_y = pontos_grade[linha][coluna][1]
                             grade[linha][coluna] = grade[i][coluna]
                             grade[i][coluna] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(2,4):
@@ -453,6 +469,7 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
                                 bloco.target_y = pontos_grade[linha][coluna][1]
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[i][coluna] = 0
+                                som_fundir.play()
                                 break
                             else:
                                 break
@@ -464,6 +481,7 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
                             bloco.target_y = pontos_grade[linha][coluna][1]
                             grade[linha][coluna] = grade[i][coluna]
                             grade[i][coluna] = 0
+                            som_mexer.play()
                             break
                 else:
                     for i in range(3,4):
@@ -473,6 +491,7 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
                                 bloco.target_y = pontos_grade[linha][coluna][1]
                                 grade[linha][coluna] = grade[linha][coluna] * 2
                                 grade[i][coluna] = 0
+                                som_fundir.play()
                                 break
                             else:
                                 break
@@ -501,7 +520,7 @@ def mover_esquerda(grade,all_blocos):
         bloco.move_direction = 'x'
     tabuleiro_antigo = deepcopy(grade)
     for i in range(4):
-        grade[i] = (fundir(comprimir(grade[i]),i,all_blocos))
+        grade[i] = (fundir(comprimir(grade[i])))
     atualizar_posicoes_blocos_esquerda(tabuleiro_antigo, grade, all_blocos)
     return tabuleiro_antigo != grade
     
@@ -520,7 +539,7 @@ def mover_direita(grade,all_blocos):
         bloco.move_direction = 'x'
     tabuleiro_antigo = deepcopy(grade)
     for i in range(4):
-        grade[i] = list(reversed(fundir(comprimir(list(reversed(grade[i]))),i,all_blocos)))
+        grade[i] = list(reversed(fundir(comprimir(list(reversed(grade[i]))))))
     atualizar_posicoes_blocos_direita(tabuleiro_antigo,grade,all_blocos)
     return tabuleiro_antigo != grade
 
@@ -540,7 +559,7 @@ def mover_cima(grade,all_blocos):
     tabuleiro_antigo = deepcopy(grade)
     transposta = list(map(list, zip(*grade)))
     for i in range(4):
-        transposta[i] = fundir(comprimir(transposta[i]),i,all_blocos)
+        transposta[i] = fundir(comprimir(transposta[i]))
     nova_grade = list(map(list, zip(*transposta)))
     for i in range(len(nova_grade)):
         grade[i] = nova_grade[i]
@@ -563,7 +582,7 @@ def mover_baixo(grade,all_blocos):
     tabuleiro_antigo = deepcopy(grade)
     transposta = list(map(list, zip(*grade)))
     for i in range(4):
-        transposta[i] = list(reversed(fundir(comprimir(list(reversed(transposta[i]))),i,all_blocos)))
+        transposta[i] = list(reversed(fundir(comprimir(list(reversed(transposta[i]))))))
     nova_grade = list(map(list, zip(*transposta)))
     for i in range(len(nova_grade)):
         grade[i] = nova_grade[i]

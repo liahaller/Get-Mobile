@@ -28,7 +28,7 @@ branco = (255,255,255)
 azul_transparente = (0, 61, 102, 128)
 vermelho_transparente = (255,0,0, 190)
 
- #definição das fontes do título, corpo, pontos e recorde   
+#definição das fontes do título, corpo, pontos e recorde   
 font = pygame.font.SysFont('Montserrat',72)
 titulo1 = font.render('Get',True,verde)
 titulo2 = font.render('Móbile',True,azul)
@@ -82,6 +82,7 @@ logo_mobile_grande = pygame.image.load('imagens pygame\\logo mobile.png').conver
 
 #transformando o logo a escala do jogo
 logo_mobile_grande = pygame.transform.scale(logo_mobile_grande,(50,50))
+
 
 #definição do maior como parâmetro para definição do recorde
 maior = 0
