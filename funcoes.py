@@ -44,11 +44,15 @@ mobile_img = pygame.transform.scale(imagens[2048],(66,66))
 img = {2:marista_img,4:consa_img,8:lourenco_img,16:miguel_img,32:santo_americo_img,64:porto_seguro_img,128:dante_img,256:santa_cruz_img,512:band_img,1024:vertice_img,2048:mobile_img}
 
 def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
-    canto_superior_esquerdo = (x,y+raio)
-    canto_superior_direito = (x+largura,y+raio)
-    canto_inferior_direito = (x+largura,y+altura-raio)
-    canto_inferior_esquerdo = (x,y+altura-raio)
+    '''
+    Desenha os quadrados dentro da grade com a borda arredondada.
 
+    Parameters:
+        tela em branco, cor de preenchimento, posição nos eixos x e y, largura do quadrado, altura do quadrado, raio da borda arredondada.
+
+    Returns:
+        quadrados cinzas arredondados na grade.   
+    '''
     pontos = [(x+raio,y+raio),(x+largura-raio,y+raio),(x+largura-raio,y+altura-raio),(x+raio,y+altura-raio)]
 
     pygame.draw.ellipse(tela,cor,(x,y,raio*2,raio*2))
@@ -63,8 +67,17 @@ def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
     pygame.draw.rect(tela, cor, pygame.Rect(x,y+raio,raio,altura-raio*2))
     pygame.draw.rect(tela, cor, pygame.Rect(x+largura-raio,y+raio,raio,altura-raio*2))
 
-#Gera blocos aleatorios
+#Gera blocos 
 def gerar_bloco(grade, all_blocos):
+    '''
+    Gera blocos (marista ou consa).
+
+    Parameters:
+        Grade, blocos.
+
+    Returns:
+        Novo bloco na grade.   
+    '''
     vazias = [(l, c) for l in range(4) for c in range(4) if grade[l][c] == 0]
     if vazias:
         linha, coluna = random.choice(vazias)
@@ -74,14 +87,32 @@ def gerar_bloco(grade, all_blocos):
         all_blocos.add(bloco)
     
 
-# Remove zeros de uma linha (comprime para a esquerda)
+# Remove zeros de uma linha (comprime)
 def comprimir(linha):
+    '''
+    Remove zeros de uma linha(comprime).
+
+    Parameters:
+        Linha.
+
+    Returns:
+        Linha comprimida.   
+    '''
     nova = [n for n in linha if n != 0]
     nova += [0] * (4 - len(nova))
     return nova
 
 # Junta blocos iguais na linha
-def fundir(linha,indice_linha,all_blocos):
+def fundir(linha):
+    '''
+    Junta blocos iguais na linha.
+
+    Parameters:
+        Linha.
+
+    Returns:
+        Novo valor após fundir e cmprimir os blocos iguais.   
+    '''
     for i in range(3):
         if linha[i] != 0 and linha[i] == linha[i+1]:
             novo_valor = linha[i] * 2
@@ -89,14 +120,32 @@ def fundir(linha,indice_linha,all_blocos):
             linha[i+1] = 0
     return comprimir(linha)
 
+#Busca o bloco que irá se mover de acordo com sua posição
 def buscar_bloco(all_blocos, linha, coluna):
+    '''
+    Busca o bloco que irá se mover de acordo com sua posição.
+
+    Parameters:
+        Blocos, linha, coluna.
+
+    Returns:
+        Bloco que irá se mover.   
+    '''
     for bloco in all_blocos:
         if abs(bloco.rect.x - pontos_grade[linha][coluna][0]) < 3 and abs(bloco.rect.y - pontos_grade[linha][coluna][1]) < 3:
             return bloco
-    print("Bloco não encontrado", linha, coluna)
 
-
+#atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para a esquerda
 def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
+    '''
+    Atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para a esquerda.
+
+    Parameters:
+        Grade, grade depois do movimento, blocos.
+
+    Returns:
+        Imagens e posições novas dos blocos.   
+    '''
     grade = deepcopy(grade)
     
     for linha in range(4):
@@ -174,9 +223,17 @@ def atualizar_posicoes_blocos_esquerda(grade, grade_atualizada, all_blocos):
                     if grade_atualizada[linha][coluna] == 0:
                         bloco.kill()
                     
-
+#atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para a direita
 def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):  
+    '''
+    Atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para a direita.
 
+    Parameters:
+        Grade, grade depois do movimento, blocos.
+
+    Returns:
+        Imagens e posições novas dos blocos.   
+    '''
     grade = deepcopy(grade)
     
     for linha in range(4):
@@ -256,7 +313,17 @@ def atualizar_posicoes_blocos_direita(grade, grade_atualizada, all_blocos):
                     if grade_atualizada[linha][coluna] == 0:
                         bloco.kill()
 
+#atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para baixo
 def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
+    '''
+    Atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para baixo.
+
+    Parameters:
+        Grade, grade depois do movimento, blocos.
+
+    Returns:
+        Imagens e posições novas dos blocos.   
+    '''
     grade = deepcopy(grade)
     
     for coluna in range(4):
@@ -334,7 +401,17 @@ def atualizar_posicoes_blocos_baixo(grade, grade_atualizada, all_blocos):
                     if grade_atualizada[linha][coluna] == 0:
                         bloco.kill()
 
+#atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para cima
 def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
+    '''
+    Atualiza posição da imagem do bloco de acordo com os diferentes casos de movimentação para cima.
+
+    Parameters:
+        Grade, grade depois do movimento, blocos.
+
+    Returns:
+        Imagens e posições novas dos blocos.  
+    '''
     grade = deepcopy(grade)
     
     for coluna in range(4):
@@ -409,8 +486,17 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
                     if grade_atualizada[linha][coluna] == 0:
                         bloco.kill()
         
-#movimentações
+#movimentações para a esquerda
 def mover_esquerda(grade,all_blocos):
+    '''
+    Movimenta o bloco para a esquerda.
+
+    Parameters:
+        Grade, blocos.
+
+    Returns:
+        Movimento dos blocos para a esquerda.  
+    '''
     for bloco in all_blocos:
         bloco.move_direction = 'x'
     tabuleiro_antigo = deepcopy(grade)
@@ -419,8 +505,17 @@ def mover_esquerda(grade,all_blocos):
     atualizar_posicoes_blocos_esquerda(tabuleiro_antigo, grade, all_blocos)
     return tabuleiro_antigo != grade
     
-
+#movimentações para a direita
 def mover_direita(grade,all_blocos):
+    '''
+    Movimenta o bloco para a direita.
+
+    Parameters:
+        Grade, blocos.
+
+    Returns:
+        Movimento dos blocos para a direita.  
+    '''
     for bloco in all_blocos:
         bloco.move_direction = 'x'
     tabuleiro_antigo = deepcopy(grade)
@@ -429,7 +524,17 @@ def mover_direita(grade,all_blocos):
     atualizar_posicoes_blocos_direita(tabuleiro_antigo,grade,all_blocos)
     return tabuleiro_antigo != grade
 
+#movimentações para cima
 def mover_cima(grade,all_blocos):
+    '''
+    Movimenta o bloco para cima.
+
+    Parameters:
+        Grade, blocos.
+
+    Returns:
+        Movimento dos blocos para cima.  
+    '''
     for bloco in all_blocos:
         bloco.move_direction = 'y'
     tabuleiro_antigo = deepcopy(grade)
@@ -442,7 +547,17 @@ def mover_cima(grade,all_blocos):
     atualizar_posicoes_blocos_cima(tabuleiro_antigo,grade,all_blocos)
     return tabuleiro_antigo != grade
 
+#movimentações para baixo
 def mover_baixo(grade,all_blocos):
+    '''
+    Movimenta o bloco para baixo.
+
+    Parameters:
+        Grade, blocos.
+
+    Returns:
+        Movimento dos blocos para baixo.  
+    '''
     for bloco in all_blocos:
         bloco.move_direction = 'y'
     tabuleiro_antigo = deepcopy(grade)
@@ -455,7 +570,17 @@ def mover_baixo(grade,all_blocos):
     atualizar_posicoes_blocos_baixo(tabuleiro_antigo,grade,all_blocos)
     return tabuleiro_antigo != grade
 
+#soma dos elementos na grade para calcular pontos
 def calcula_pontos(grade):
+    '''
+    Soma dos elementos na grade para calcular pontos.
+
+    Parameters:
+        Grade.
+
+    Returns:
+        Pontos.  
+    '''
     pontos = 1
     for linha in grade:
         for valor in linha:
@@ -466,6 +591,15 @@ def calcula_pontos(grade):
     
 #fim de jogo
 def verificar_fim_de_jogo(grade):
+    '''
+    Verifica se o jogo chegou ao fim(jogador perdeu).
+
+    Parameters:
+        Grade.
+
+    Returns:
+        Verificação se o jogo chegou ao fim.  
+    '''
     for linha in grade:
         if 0 in linha:
             return False
@@ -478,7 +612,17 @@ def verificar_fim_de_jogo(grade):
                 return False
     return True
 
+#verificação se o bloco da móbile está na grade para definir a vitória
 def verificar_vitoria(grade):
+    '''
+    Verificação se o bloco da móbile está na grade para definir a vitória.
+
+    Parameters:
+        Grade.
+
+    Returns:
+        Verificação se o jogador ganhou.  
+    '''
     for linha in grade:
         if 2048 in linha:
             return True
