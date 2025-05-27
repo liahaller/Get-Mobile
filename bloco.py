@@ -1,4 +1,6 @@
 import pygame
+
+#cria Classe Bloco
 class Bloco(pygame.sprite.Sprite):
     def __init__(self,img,x,y):
         pygame.sprite.Sprite.__init__(self)
@@ -13,6 +15,7 @@ class Bloco(pygame.sprite.Sprite):
         self.moving = False
         self.move_direction = None
     
+    #define a função que atualiza a posição do bloco
     def update(self):
         if self.move_direction == 'x':
             if self.rect.x < self.target_x:
@@ -27,6 +30,7 @@ class Bloco(pygame.sprite.Sprite):
         
         self.moving = not(self.rect.x == self.target_x and self.rect.y == self.target_y)
 
+    #desenha os blocos
     def draw(self, window):
         print("draw")
         window.blit(self.image,(self.rect.x,self.rect.y))
