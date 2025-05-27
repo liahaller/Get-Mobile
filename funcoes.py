@@ -501,7 +501,7 @@ def mover_esquerda(grade,all_blocos):
         bloco.move_direction = 'x'
     tabuleiro_antigo = deepcopy(grade)
     for i in range(4):
-        grade[i] = (fundir(comprimir(grade[i]),i,all_blocos))
+        grade[i] = (fundir(comprimir(grade[i])))
     atualizar_posicoes_blocos_esquerda(tabuleiro_antigo, grade, all_blocos)
     return tabuleiro_antigo != grade
     
@@ -520,7 +520,7 @@ def mover_direita(grade,all_blocos):
         bloco.move_direction = 'x'
     tabuleiro_antigo = deepcopy(grade)
     for i in range(4):
-        grade[i] = list(reversed(fundir(comprimir(list(reversed(grade[i]))),i,all_blocos)))
+        grade[i] = list(reversed(fundir(comprimir(list(reversed(grade[i]))))))
     atualizar_posicoes_blocos_direita(tabuleiro_antigo,grade,all_blocos)
     return tabuleiro_antigo != grade
 
@@ -540,7 +540,7 @@ def mover_cima(grade,all_blocos):
     tabuleiro_antigo = deepcopy(grade)
     transposta = list(map(list, zip(*grade)))
     for i in range(4):
-        transposta[i] = fundir(comprimir(transposta[i]),i,all_blocos)
+        transposta[i] = fundir(comprimir(transposta[i]))
     nova_grade = list(map(list, zip(*transposta)))
     for i in range(len(nova_grade)):
         grade[i] = nova_grade[i]
@@ -563,7 +563,7 @@ def mover_baixo(grade,all_blocos):
     tabuleiro_antigo = deepcopy(grade)
     transposta = list(map(list, zip(*grade)))
     for i in range(4):
-        transposta[i] = list(reversed(fundir(comprimir(list(reversed(transposta[i]))),i,all_blocos)))
+        transposta[i] = list(reversed(fundir(comprimir(list(reversed(transposta[i]))))))
     nova_grade = list(map(list, zip(*transposta)))
     for i in range(len(nova_grade)):
         grade[i] = nova_grade[i]
