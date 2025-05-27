@@ -70,6 +70,8 @@ def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
 #Gera blocos 
 def gerar_bloco(grade, all_blocos):
     '''
+    Função feita com auxilio de IA.
+
     Gera blocos (marista ou consa).
 
     Parameters:
@@ -90,6 +92,8 @@ def gerar_bloco(grade, all_blocos):
 # Remove zeros de uma linha (comprime)
 def comprimir(linha):
     '''
+    Função feita com auxilio de IA.
+
     Remove zeros de uma linha(comprime).
 
     Parameters:
@@ -489,6 +493,8 @@ def atualizar_posicoes_blocos_cima(grade, grade_atualizada, all_blocos):
 #movimentações para a esquerda
 def mover_esquerda(grade,all_blocos):
     '''
+    Função feita com auxilio de IA.
+
     Movimenta o bloco para a esquerda.
 
     Parameters:
@@ -508,6 +514,8 @@ def mover_esquerda(grade,all_blocos):
 #movimentações para a direita
 def mover_direita(grade,all_blocos):
     '''
+    Função feita com auxilio de IA.
+
     Movimenta o bloco para a direita.
 
     Parameters:
@@ -527,6 +535,8 @@ def mover_direita(grade,all_blocos):
 #movimentações para cima
 def mover_cima(grade,all_blocos):
     '''
+    Função feita com auxilio de IA.
+
     Movimenta o bloco para cima.
 
     Parameters:
@@ -550,6 +560,8 @@ def mover_cima(grade,all_blocos):
 #movimentações para baixo
 def mover_baixo(grade,all_blocos):
     '''
+    Função feita com auxilio de IA.
+
     Movimenta o bloco para baixo.
 
     Parameters:
