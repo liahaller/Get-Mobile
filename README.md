@@ -1,6 +1,12 @@
 # Pygame
 Projeto: GetMobile
 
+Instruções para rodar o pygame:
+- Para rodar, certifique-se de ter o Python instalado e depois instale o Pygame com o seguinte comando:
+        pip install pygame
+- Depois disso, basta executar o arquivo principal com:
+        python main.py
+
 Membros:
 - Lia Haller
 - Clara Salomão
