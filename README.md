@@ -24,5 +24,5 @@ Controles:
 → : Move todos os blocos para a direita
 
 Vídeo do jogo funcionando:
-https://youtu.be/JMAjP1VwSMg
+https://youtu.be/fFFtOBZtxwM
 
