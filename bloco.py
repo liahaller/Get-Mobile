@@ -16,19 +16,22 @@ class Bloco(pygame.sprite.Sprite):
         self.move_direction = None
     
     #define a função que atualiza a posição do bloco
+    def deslocamento(self, atual, alvo):
+        """Retorna o deslocamento ideal para um eixo."""
+        if atual < alvo:
+            return min(self.speed, alvo - atual)
+        elif atual > alvo:
+            return -min(self.speed, atual - alvo)
+        return 0
+
     def update(self):
         if self.move_direction == 'x':
-            if self.rect.x < self.target_x:
-                self.rect.x += min(self.speed,self.target_x - self.rect.x)
-            else:
-                self.rect.x -= min(self.speed, self.rect.x - self.target_x)
+            self.rect.x += self.deslocamento(self.rect.x, self.target_x)
         elif self.move_direction == 'y':
-            if self.rect.y < self.target_y:
-                self.rect.y += min(self.speed, self.target_y - self.rect.y)
-            elif self.rect.y > self.target_y:
-                self.rect.y -= min(self.speed, self.rect.y - self.target_y)
-        
-        self.moving = not(self.rect.x == self.target_x and self.rect.y == self.target_y)
+            self.rect.y += self.deslocamento(self.rect.y, self.target_y)
+
+        self.moving = not(self.rect.x == self.target_x
+                        and self.rect.y == self.target_y)
 
     #desenha os blocos
     def draw(self, window):
