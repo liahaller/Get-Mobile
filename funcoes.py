@@ -31,21 +31,15 @@ for i in range(4):
         pontos_linha.append((x,y))
     pontos_grade.append(pontos_linha)
 
-imagens = {2:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg").convert(),4:pygame.image.load('imagens pygame\\Captura de tela 2025-05-13 141135.png').convert(),8:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 141437.png").convert(),16:pygame.image.load("imagens pygame\\maxresdefault-2-1024x576 (1).jpg").convert(),32:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 145644.png").convert(),64:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 150226.png").convert(),128:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg").convert(),256:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg").convert(),512:pygame.image.load("imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg").convert(),1024:pygame.image.load("imagens pygame\\Captura de tela 2025-05-13 142138.png").convert(),2048: pygame.image.load('imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg').convert()}
+def imagens():
+    caminhos = {2: "imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_2ae55e46.jpg", 4: "imagens pygame\\Captura de tela 2025-05-13 141135.png", 8: "imagens pygame\\Captura de tela 2025-05-13 141437.png", 16: "imagens pygame\\maxresdefault-2-1024x576 (1).jpg", 32: "imagens pygame\\Captura de tela 2025-05-13 145644.png", 64: "imagens pygame\\Captura de tela 2025-05-13 150226.png", 128: "imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_578a1758.jpg", 256: "imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_e44b1291.jpg", 512: "imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.54_9311db58.jpg", 1024: "imagens pygame\\Captura de tela 2025-05-13 142138.png", 2048: "imagens pygame\\Imagem do WhatsApp de 2025-05-13 à(s) 14.07.55_fc0e097a.jpg",
+    }
+    return {
+        valor: pygame.transform.scale(pygame.image.load(caminho).convert(), (66, 66))
+        for valor, caminho in caminhos.items()
+    }
 
-marista_img = pygame.transform.scale(imagens[2],(66,66))
-consa_img = pygame.transform.scale(imagens[4],(66,66))
-lourenco_img = pygame.transform.scale(imagens[8],(66,66))
-miguel_img = pygame.transform.scale(imagens[16],(66,66))
-santo_americo_img = pygame.transform.scale(imagens[32],(66,66))
-porto_seguro_img = pygame.transform.scale(imagens[64],(66,66))
-dante_img = pygame.transform.scale(imagens[128],(66,66))
-santa_cruz_img = pygame.transform.scale(imagens[256],(66,66))
-band_img = pygame.transform.scale(imagens[512],(66,66))
-vertice_img = pygame.transform.scale(imagens[1024],(66,66))
-mobile_img = pygame.transform.scale(imagens[2048],(66,66))
-
-img = {2:marista_img,4:consa_img,8:lourenco_img,16:miguel_img,32:santo_americo_img,64:porto_seguro_img,128:dante_img,256:santa_cruz_img,512:band_img,1024:vertice_img,2048:mobile_img}
+img = imagens()
 
 def desenha_quadrado_arredondado(tela,cor,x,y,largura,altura,raio):
     '''
